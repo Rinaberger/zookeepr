@@ -36,12 +36,14 @@ function findById(id, animalsArray) {
   return result;
 }
 
+
+//creates the route to the data & links query to data
 app.get('/api/animals', (req, res) => {
   let results = animals;
   if (req.query) {
-    results = filterByQuery(req.query, results);
+    results = filterByQuery(req.query, results);  //pulling results from query function Line 7
   }
-  res.json(results);
+  res.json(results); //send mode/json = send
 });
 
 app.get('/api/animals/:id', (req, res) => {
