@@ -30,7 +30,18 @@ const getAnimals = (formData = {}) => {
   });
 
   console.log(queryUrl);
-
+  //sending request to the server.js file
+  fetch(queryUrl)
+  .then(response => {
+    if (!response.ok) {
+      return alert('Error: ' + response.statusText);
+    }
+    return response.json();
+  })
+  .then(animalData => {
+    console.log(animalData);
+    printResults(animalData);
+  });
 };
 
 const handleGetAnimalsSubmit = event => {
